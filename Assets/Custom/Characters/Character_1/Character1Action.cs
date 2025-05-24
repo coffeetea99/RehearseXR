@@ -13,6 +13,9 @@ public class Character1Action : MonoBehaviour
     private float timer = 0f;
     private float beforeTime;
 
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,22 +23,28 @@ public class Character1Action : MonoBehaviour
         {
             animator = GetComponent<Animator>();
         }
+        Transform transform = GetComponent<Transform>();
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Transform transform = GetComponent<Transform>();
+            transform.position = initialPosition;
+            transform.rotation = initialRotation;
+        }
+
         beforeTime = timer;
         timer += Time.deltaTime;
 
         // TODO: fix
-        if (DidTimePass(7))
+        if (DidTimePass(1))
         {
-            SetAction(TALKING);
-        }
-        else if (DidTimePass(10))
-        {
-            SetAction(IDLE);
+            SetAction(RUNNING);
         }
     }
 
