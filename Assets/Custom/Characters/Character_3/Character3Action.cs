@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Character1Action : MonoBehaviour
+public class Character3Action : MonoBehaviour
 {
     private const int IDLE = 0;
     private const int TALKING = 1;
@@ -43,9 +43,9 @@ public class Character1Action : MonoBehaviour
         timer += Time.deltaTime;
 
         // TODO: fix
-        if (DidTimePass(1))
+        if (DidTimePass(3))
         {
-            SetAction(WALKING);
+            SetAction(TALKING);
         }
     }
 
