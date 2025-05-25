@@ -4450,6 +4450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1850634592}
+  - component: {fileID: 1850634593}
   m_Layer: 5
   m_Name: Script
   m_TagString: Untagged
@@ -4478,6 +4479,20 @@ RectTransform:
   m_AnchoredPosition: {x: -250, y: 100}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1850634593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850634591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6ebb892e270bf41b6dce2b9785204c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptBackground: {fileID: 1852064413}
+  scriptText: {fileID: 49616992}
 --- !u!1 &1852064411
 GameObject:
   m_ObjectHideFlags: 0
