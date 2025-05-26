@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Character B
+
 public class Character3Action : MonoBehaviour
 {
     private const int IDLE = 0;
@@ -9,6 +11,8 @@ public class Character3Action : MonoBehaviour
     private const int SEARCHING = 4;
     private const int CLICKING = 5;
 
+    // Animation
+
     public Animator animator;
 
     private float timer = 0f;
@@ -16,6 +20,19 @@ public class Character3Action : MonoBehaviour
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
+
+    // Audio
+
+    private AudioSource audioSource;
+    public AudioClip line2;
+    public AudioClip line4;
+    public AudioClip line6;
+    public AudioClip line9;
+    public AudioClip line12;
+    public AudioClip line14;
+    public AudioClip line19;
+    public AudioClip line21;
+    public AudioClip line23;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +44,8 @@ public class Character3Action : MonoBehaviour
         Transform transform = GetComponent<Transform>();
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +60,8 @@ public class Character3Action : MonoBehaviour
             SetAction(IDLE);
             timer = 0f;
             beforeTime = 0f;
+            
+            audioSource.Stop();
         }
 
         beforeTime = timer;
@@ -50,6 +71,7 @@ public class Character3Action : MonoBehaviour
         if (DidTimePass(3))
         {
             SetAction(TALKING);
+            StartLine(line2);
         }
     }
 
@@ -61,5 +83,11 @@ public class Character3Action : MonoBehaviour
     void SetAction(int action)
     {
         animator.SetInteger("Action", action);
+    }
+
+    void StartLine(AudioClip line)
+    {
+        audioSource.clip = line;
+        audioSource.Play();
     }
 }

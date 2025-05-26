@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Character A
+
 public class Character2Action : MonoBehaviour
 {
     private const int IDLE = 0;
@@ -9,6 +11,8 @@ public class Character2Action : MonoBehaviour
     private const int SEARCHING = 4;
     private const int CLICKING = 5;
 
+    // Animation
+
     public Animator animator;
 
     private float timer = 0f;
@@ -16,6 +20,18 @@ public class Character2Action : MonoBehaviour
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
+
+    // Audio
+
+    private AudioSource audioSource;
+    public AudioClip line1;
+    public AudioClip line3;
+    public AudioClip line7;
+    public AudioClip line11;
+    public AudioClip line16;
+    public AudioClip line18;
+    public AudioClip line22;
+    public AudioClip line25;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,6 +43,8 @@ public class Character2Action : MonoBehaviour
         Transform transform = GetComponent<Transform>();
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +59,8 @@ public class Character2Action : MonoBehaviour
             SetAction(IDLE);
             timer = 0f;
             beforeTime = 0f;
+            
+            audioSource.Stop();
         }
 
         beforeTime = timer;
@@ -50,6 +70,7 @@ public class Character2Action : MonoBehaviour
         if (DidTimePass(2))
         {
             SetAction(SEARCHING);
+            StartLine(line1);
         }
     }
 
@@ -61,5 +82,11 @@ public class Character2Action : MonoBehaviour
     void SetAction(int action)
     {
         animator.SetInteger("Action", action);
+    }
+
+    void StartLine(AudioClip line)
+    {
+        audioSource.clip = line;
+        audioSource.Play();
     }
 }
