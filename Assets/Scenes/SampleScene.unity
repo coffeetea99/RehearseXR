@@ -1228,9 +1228,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1342941008}
   - {fileID: 939379433}
   - {fileID: 1702369684}
+  - {fileID: 1342941008}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &530840167
@@ -1305,7 +1305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b84b5a1f6d55af44e96c0985b69d79b7, type: 3}
       propertyPath: m_Name
-      value: Character_1
+      value: Character_C
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: b84b5a1f6d55af44e96c0985b69d79b7, type: 3}
       propertyPath: m_Controller
@@ -2168,7 +2168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 942e5f54eb2d9a4419f5716a594da0da, type: 3}
       propertyPath: m_Name
-      value: Character_2
+      value: Character_A
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 942e5f54eb2d9a4419f5716a594da0da, type: 3}
       propertyPath: m_Controller
@@ -3358,7 +3358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 94a036f05f5a4bc4f853dac4bcb9fab4, type: 3}
       propertyPath: m_Name
-      value: Character_3
+      value: Character_B
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 94a036f05f5a4bc4f853dac4bcb9fab4, type: 3}
       propertyPath: m_Controller
