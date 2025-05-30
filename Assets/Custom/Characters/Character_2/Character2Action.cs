@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class Character2Action : MonoBehaviour
 {
@@ -16,6 +18,8 @@ public class Character2Action : MonoBehaviour
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
+    
+    private InputDevice leftController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,12 +31,28 @@ public class Character2Action : MonoBehaviour
         Transform transform = GetComponent<Transform>();
         initialPosition = transform.position;
         initialRotation = transform.rotation;
+        
+        // Find the left-hand controller
+        List<InputDevice> devices = new List<InputDevice>();
+        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, devices);
+
+        if (devices.Count > 0)
+        {
+            leftController = devices[0];
+            Debug.Log("Left controller found: " + leftController.name);
+        }
+        else
+        {
+            Debug.LogWarning("Left controller not found.");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+    #if UNITY_EDITOR
+        // Debug key for simulating Y button press in Editor
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             Transform transform = GetComponent<Transform>();
             transform.position = initialPosition;
@@ -42,6 +62,21 @@ public class Character2Action : MonoBehaviour
             timer = 0f;
             beforeTime = 0f;
         }
+    #else
+        if (!leftController.isValid)
+            return;
+
+        if (leftController.TryGetFeatureValue(CommonUsages.secondaryButton, out bool yButtonPressed) && yButtonPressed)
+        {
+            Transform transform = GetComponent<Transform>();
+            transform.position = initialPosition;
+            transform.rotation = initialRotation;
+
+            SetAction(IDLE);
+            timer = 0f;
+            beforeTime = 0f;
+        }
+    #endif
 
         beforeTime = timer;
         timer += Time.deltaTime;
