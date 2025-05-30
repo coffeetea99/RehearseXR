@@ -12,7 +12,7 @@ public class Character2Action : MonoBehaviour
     public Animator animator;
 
     private float timer = 0f;
-    private float beforeTime;
+    private float beforeTime = 0f;
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
@@ -37,6 +37,10 @@ public class Character2Action : MonoBehaviour
             Transform transform = GetComponent<Transform>();
             transform.position = initialPosition;
             transform.rotation = initialRotation;
+
+            SetAction(IDLE);
+            timer = 0f;
+            beforeTime = 0f;
         }
 
         beforeTime = timer;
