@@ -72,6 +72,7 @@ public class Character1Action : MonoBehaviour
         {
             SetAction(WALKING);
             StartLine(line5);
+            SetRotation(270f);
         }
     }
 
@@ -89,5 +90,11 @@ public class Character1Action : MonoBehaviour
     {
         audioSource.clip = line;
         audioSource.Play();
+    }
+
+    void SetRotation(float rotationY)
+    // Heading left = 0, back = 90, right = 180, front = 270
+    {
+        transform.rotation = Quaternion.Euler(0f, rotationY, 0f);
     }
 }
