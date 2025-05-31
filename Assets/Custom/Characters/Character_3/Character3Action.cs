@@ -26,15 +26,15 @@ public class Character3Action : MonoBehaviour
     // Audio
 
     private AudioSource audioSource;
-    public AudioClip line2;
-    public AudioClip line4;
-    public AudioClip line6;
-    public AudioClip line9;
-    public AudioClip line12;
-    public AudioClip line14;
-    public AudioClip line19;
-    public AudioClip line21;
-    public AudioClip line23;
+    public AudioClip line2;     // 아니, 아직.
+    public AudioClip line4;     // 어떡하지?
+    public AudioClip line6;     // 미쳤어? 불을 켜면 어떡해!
+    public AudioClip line9;     // 그런가...
+    public AudioClip line12;    // 난 이쪽 찾아볼게.
+    public AudioClip line14;    // 아니야. 우리가 찾는 건 빨간색인데 이건 붉은색이잖아.
+    public AudioClip line19;    // 아무리 찾아도 나오질 않아.
+    public AudioClip line21;    // 도대체 어디에 놔둔 거야.
+    public AudioClip line23;    // 어쩌지, 아직 못찾았는데.
 
     private List<ScheduledEvent> eventSchedule = new();
 
@@ -52,9 +52,49 @@ public class Character3Action : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         // TODO: fix
-        eventSchedule.Add(new ScheduledEvent(3f, () => SetAction(TALKING)));
-        eventSchedule.Add(new ScheduledEvent(3f, () => StartLine(line2)));
-        eventSchedule.Add(new ScheduledEvent(3f, () => SetRotation(90f)));
+        eventSchedule.Add(new ScheduledEvent(4.5f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(4.5f, () => StartLine(line2)));    // 2
+        eventSchedule.Add(new ScheduledEvent(6.5f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(10.5f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(10.5f, () => StartLine(line4)));   // 1.5
+        eventSchedule.Add(new ScheduledEvent(12f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(22f, () => SetRotation(305f)));
+        eventSchedule.Add(new ScheduledEvent(22f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(22f, () => StartLine(line6)));     // 3.5
+        eventSchedule.Add(new ScheduledEvent(25.5f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(37.5f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(37.5f, () => StartLine(line9)));   // 1.5
+        eventSchedule.Add(new ScheduledEvent(39f, () => SetAction(IDLE)));
+        
+        eventSchedule.Add(new ScheduledEvent(43.2f, () => SetRotation(180f)));
+        eventSchedule.Add(new ScheduledEvent(43.2f, () => SetAction(WALKING)));
+        eventSchedule.Add(new ScheduledEvent(44.2f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(52.5f, () => SetAction(CLICKING)));
+        eventSchedule.Add(new ScheduledEvent(56.5f, () => SetAction(IDLE)));
+        eventSchedule.Add(new ScheduledEvent(56.5f, () => SetRotation(90f)));
+        eventSchedule.Add(new ScheduledEvent(57f, () => SetAction(SEARCHING)));
+        eventSchedule.Add(new ScheduledEvent(58f, () => StartLine(line12)));    // 2.5
+
+        eventSchedule.Add(new ScheduledEvent(65f, () => SetAction(IDLE)));
+        eventSchedule.Add(new ScheduledEvent(65.5f, () => SetRotation(0f)));
+        eventSchedule.Add(new ScheduledEvent(66f, () => SetAction(WALKING)));
+        eventSchedule.Add(new ScheduledEvent(67f, () => SetAction(IDLE)));
+        eventSchedule.Add(new ScheduledEvent(67.5f, () => SetRotation(270f)));
+        eventSchedule.Add(new ScheduledEvent(68f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(68f, () => StartLine(line14)));    // 5
+        eventSchedule.Add(new ScheduledEvent(73f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(93f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(93f, () => StartLine(line19)));    // 2.5
+        eventSchedule.Add(new ScheduledEvent(95.5f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(102f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(102f, () => StartLine(line21)));   // 2.5
+        eventSchedule.Add(new ScheduledEvent(104.5f, () => SetAction(IDLE)));
 
         /*
         Formats
