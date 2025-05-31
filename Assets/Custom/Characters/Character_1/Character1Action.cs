@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 // Character C
@@ -34,6 +36,8 @@ public class Character1Action : MonoBehaviour
     public AudioClip line24;
     public AudioClip line26;
 
+    private List<ScheduledEvent> eventSchedule = new();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +50,18 @@ public class Character1Action : MonoBehaviour
         initialRotation = transform.rotation;
 
         audioSource = GetComponent<AudioSource>();
+
+        // TODO: fix
+        eventSchedule.Add(new ScheduledEvent(1f, () => SetAction(WALKING)));
+        eventSchedule.Add(new ScheduledEvent(1f, () => StartLine(line5)));
+        eventSchedule.Add(new ScheduledEvent(1f, () => SetRotation(270f)));
+
+        /*
+        Formats
+        eventSchedule.Add(new ScheduledEvent(f, () => SetAction()));
+        eventSchedule.Add(new ScheduledEvent(f, () => StartLine(line)));
+        eventSchedule.Add(new ScheduledEvent(f, () => SetRotation(f)));
+        */
     }
 
     // Update is called once per frame
@@ -62,17 +78,24 @@ public class Character1Action : MonoBehaviour
             beforeTime = 0f;
             
             audioSource.Stop();
+
+            // Reset scheduled events
+
+            foreach (var e in eventSchedule)
+            {
+                e.done = false;
+            }
         }
 
         beforeTime = timer;
         timer += Time.deltaTime;
 
-        // TODO: fix
-        if (DidTimePass(1))
+        foreach (var e in eventSchedule)
         {
-            SetAction(WALKING);
-            StartLine(line5);
-            SetRotation(270f);
+            if (!e.done && DidTimePass(e.time))
+            {
+                e.Invoke();
+            }
         }
     }
 
@@ -96,5 +119,24 @@ public class Character1Action : MonoBehaviour
     // Heading left = 0, back = 90, right = 180, front = 270
     {
         transform.rotation = Quaternion.Euler(0f, rotationY, 0f);
+    }
+
+    private class ScheduledEvent
+    {
+        public float time;
+        public Action action;
+        public bool done = false;
+
+        public ScheduledEvent(float time, Action action)
+        {
+            this.time = time;
+            this.action = action;
+        }
+
+        public void Invoke()
+        {
+            done = true;
+            action?.Invoke();
+        }
     }
 }
