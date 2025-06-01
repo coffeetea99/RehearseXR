@@ -2879,6 +2879,7 @@ MonoBehaviour:
   line20: {fileID: 8300000, guid: ad4c7bb2bc4925b4d9ac6bbce60f8d3f, type: 3}
   line24: {fileID: 8300000, guid: cc8f82475359db34fbd4b805fa8819ce, type: 3}
   line26: {fileID: 8300000, guid: 83b7fcc40a4a9d045b801b3b0def0dce, type: 3}
+  warning: {fileID: 8300000, guid: e2d5b4bede8eb8c47bade85c81391db2, type: 3}
 --- !u!82 &1342941010
 AudioSource:
   m_ObjectHideFlags: 0

@@ -36,6 +36,8 @@ public class Character1Action : MonoBehaviour
     public AudioClip line24;    // 지금 그게 중요해? 뛰어!
     public AudioClip line26;    // 그럴 시간 없다고! 빨리 나와!
 
+    public AudioClip warning;
+
     private List<ScheduledEvent> eventSchedule = new();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -88,6 +90,21 @@ public class Character1Action : MonoBehaviour
         eventSchedule.Add(new ScheduledEvent(96.5f, () => SetAction(TALKING)));
         eventSchedule.Add(new ScheduledEvent(96.5f, () => StartLine(line20)));  // 4.5
         eventSchedule.Add(new ScheduledEvent(101f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(106f, () => StartLine(warning)));  // 4.5
+        eventSchedule.Add(new ScheduledEvent(107f, () => SetRotation(270f)));
+
+        eventSchedule.Add(new ScheduledEvent(118.5f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(118.5f, () => StartLine(line24))); // 3
+        eventSchedule.Add(new ScheduledEvent(121.5f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(126f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(126f, () => StartLine(line26)));   // 3.5
+        eventSchedule.Add(new ScheduledEvent(129.5f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(131f, () => SetRotation(161.32f)));
+        eventSchedule.Add(new ScheduledEvent(131f, () => SetAction(RUNNING)));
+        eventSchedule.Add(new ScheduledEvent(135f, () => SetAction(IDLE)));
 
         /*
         Formats

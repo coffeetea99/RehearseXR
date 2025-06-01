@@ -63,7 +63,7 @@ public class Character2Action : MonoBehaviour
         eventSchedule.Add(new ScheduledEvent(26.5f, () => SetAction(TALKING)));
         eventSchedule.Add(new ScheduledEvent(26.5f, () => StartLine(line7)));   // 4
         eventSchedule.Add(new ScheduledEvent(30.5f, () => SetAction(IDLE)));
-        
+
         eventSchedule.Add(new ScheduledEvent(43f, () => SetRotation(0f)));
         eventSchedule.Add(new ScheduledEvent(43f, () => SetAction(WALKING)));
         eventSchedule.Add(new ScheduledEvent(44f, () => SetAction(IDLE)));
@@ -74,7 +74,7 @@ public class Character2Action : MonoBehaviour
         eventSchedule.Add(new ScheduledEvent(49f, () => SetAction(SEARCHING)));
         eventSchedule.Add(new ScheduledEvent(50f, () => StartLine(line11)));   // 1.5
 
-        
+
         eventSchedule.Add(new ScheduledEvent(77f, () => SetAction(IDLE)));
         eventSchedule.Add(new ScheduledEvent(77.5f, () => SetRotation(0f)));
         eventSchedule.Add(new ScheduledEvent(78f, () => SetAction(CLICKING)));
@@ -87,6 +87,20 @@ public class Character2Action : MonoBehaviour
         eventSchedule.Add(new ScheduledEvent(89.5f, () => SetAction(TALKING)));
         eventSchedule.Add(new ScheduledEvent(89.5f, () => StartLine(line18)));    // 2.5
         eventSchedule.Add(new ScheduledEvent(92f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(107.5f, () => SetRotation(0f)));
+
+        eventSchedule.Add(new ScheduledEvent(111.5f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(111.5f, () => StartLine(line22)));    // 2
+        eventSchedule.Add(new ScheduledEvent(113.5f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(122.5f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(122.5f, () => StartLine(line25)));    // 2.5
+        eventSchedule.Add(new ScheduledEvent(125f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(131f, () => SetRotation(161.32f)));
+        eventSchedule.Add(new ScheduledEvent(131f, () => SetAction(RUNNING)));
+        eventSchedule.Add(new ScheduledEvent(135f, () => SetAction(IDLE)));
 
         /*
         Formats

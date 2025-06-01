@@ -96,6 +96,16 @@ public class Character3Action : MonoBehaviour
         eventSchedule.Add(new ScheduledEvent(102f, () => StartLine(line21)));   // 2.5
         eventSchedule.Add(new ScheduledEvent(104.5f, () => SetAction(IDLE)));
 
+        eventSchedule.Add(new ScheduledEvent(108f, () => SetRotation(180f)));
+
+        eventSchedule.Add(new ScheduledEvent(114.5f, () => SetAction(TALKING)));
+        eventSchedule.Add(new ScheduledEvent(114.5f, () => StartLine(line23)));    // 3
+        eventSchedule.Add(new ScheduledEvent(117.5f, () => SetAction(IDLE)));
+
+        eventSchedule.Add(new ScheduledEvent(131f, () => SetRotation(161.32f)));
+        eventSchedule.Add(new ScheduledEvent(131f, () => SetAction(RUNNING)));
+        eventSchedule.Add(new ScheduledEvent(135f, () => SetAction(IDLE)));
+
         /*
         Formats
         eventSchedule.Add(new ScheduledEvent(f, () => SetAction()));
