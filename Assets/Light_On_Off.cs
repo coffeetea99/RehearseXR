@@ -1,6 +1,12 @@
+using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 using UnityEngine.XR;
 using UnityEngine.XR.Content;
@@ -13,7 +19,10 @@ public class Light_On_Off : MonoBehaviour
     public float slider_Value; // slider의 위치를 담는 변수
     public int slider_Value_int; // slider의 위치를 정수로 변환, log(intensity) 값, 0 ~ 30
 
+    public bool lever_on;
+
     public GameObject Light1_Intensiety;
+    public GameObject Light1_OnOff;
 
     void Start()
     {
@@ -99,22 +108,35 @@ public class Light_On_Off : MonoBehaviour
         slider_Value = child_object.GetComponent<XRSlider>().value;
         slider_Value_int = (int)(slider_Value * 30);
 
-        if (slider_Value_int != 0)
+        GameObject child_object2 = Light1_OnOff.transform.Find("Lever").gameObject;
+        lever_on = child_object2.GetComponent<XRLever>().value;
+
+        if (lever_on)
         {
-            double counter = 1.0f;
-            for (int i = 0; i < slider_Value_int; i++)
+            if (slider_Value_int != 0)
             {
-                counter = counter * 1.23;
+                double counter = 1.0f;
+                for (int i = 0; i < slider_Value_int; i++)
+                {
+                    counter = counter * 1.23;
+                }
+                myLight.intensity = (int)counter;
             }
-            myLight.intensity = (int)counter;
-        }
-        else if (slider_Value_int == 30)
-        {
-            myLight.intensity = 500;
+            else if (slider_Value_int == 30)
+            {
+                myLight.intensity = 500;
+            }
+            else
+            {
+                myLight.intensity = 0;
+            }
+
         }
         else
         {
             myLight.intensity = 0;
         }
+
+       
     }
 }
