@@ -36,6 +36,7 @@ namespace UnityEngine.XR.Content.Interaction
         ValueChangeEvent m_OnValueChange = new ValueChangeEvent();
 
         IXRSelectInteractor m_Interactor;
+        
 
         /// <summary>
         /// The value of the slider

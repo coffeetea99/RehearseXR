@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 public class NewEmptyCSharpScript : MonoBehaviour
 {
     public GameObject TargetPosition;

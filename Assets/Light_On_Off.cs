@@ -2,20 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.XR;
+using UnityEngine.XR.Content;
+using UnityEngine.XR.Content.Interaction;
+
 
 public class Light_On_Off : MonoBehaviour
 {
     Light myLight; //light 컴포넌트를 담는 변수
+    public float slider_Value; // slider의 위치를 담는 변수
+    public int slider_Value_int; // slider의 위치를 정수로 변환, log(intensity) 값, 0 ~ 30
+
+    public GameObject Light1_Intensiety;
 
     void Start()
     {
         myLight = this.GetComponent<Light>(); //오브젝트가 가진 light 컴포넌트를 가져옴.
         myLight.intensity = 500;
+        slider_Value = 0.0f;
+        slider_Value_int = 0;
     }
 
     void Update()
     {
-        // I : 조명세기 증가, O : 조명 on/off, P : 조명 세기 감소
+        /*
+         // 키보드로만 조작
+         // I : 조명세기 증가, O : 조명 on/off, P : 조명 세기 감소
         if (Input.GetKeyDown(KeyCode.O))
         {
             if(myLight.intensity <= 0)
@@ -59,6 +71,50 @@ public class Light_On_Off : MonoBehaviour
                 }
             }
             
+        }   
+         */
+
+        /*
+        // 키보드로만 조작, slider_Value_int 활용
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            slider_Value_int--;
+        }
+        else if (Input.GetKeyDown(KeyCode.P))
+        {
+            slider_Value_int++;
+        }
+
+        if (slider_Value_int < 0)
+        {
+            slider_Value_int = 0;
+        }
+        else if(slider_Value_int > 30)
+        {
+            slider_Value_int = 30;
+        }
+         */
+
+        GameObject child_object = Light1_Intensiety.transform.Find("Slider").gameObject;
+        slider_Value = child_object.GetComponent<XRSlider>().value;
+        slider_Value_int = (int)(slider_Value * 30);
+
+        if (slider_Value_int != 0)
+        {
+            double counter = 1.0f;
+            for (int i = 0; i < slider_Value_int; i++)
+            {
+                counter = counter * 1.23;
+            }
+            myLight.intensity = (int)counter;
+        }
+        else if (slider_Value_int == 30)
+        {
+            myLight.intensity = 500;
+        }
+        else
+        {
+            myLight.intensity = 0;
         }
     }
 }
