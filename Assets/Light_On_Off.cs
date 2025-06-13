@@ -19,7 +19,7 @@ public class Light_On_Off : MonoBehaviour
     public float slider_Value; // slider의 위치를 담는 변수
     public int slider_Value_int; // slider의 위치를 정수로 변환, log(intensity) 값, 0 ~ 30
 
-    public bool lever_on;
+    public bool Light_On;
 
     public GameObject Light1_Intensiety;
     public GameObject Light1_OnOff;
@@ -30,6 +30,8 @@ public class Light_On_Off : MonoBehaviour
         myLight.intensity = 500;
         slider_Value = 0.0f;
         slider_Value_int = 0;
+
+        Light_On = true;
     }
 
     void Update()
@@ -108,10 +110,10 @@ public class Light_On_Off : MonoBehaviour
         slider_Value = child_object.GetComponent<XRSlider>().value;
         slider_Value_int = (int)(slider_Value * 30);
 
-        GameObject child_object2 = Light1_OnOff.transform.Find("Lever").gameObject;
-        lever_on = child_object2.GetComponent<XRLever>().value;
+        GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
+        Light_On = OnOff_object.GetComponent<XRLever>().value;
 
-        if (lever_on)
+        if (Light_On)
         {
             if (slider_Value_int != 0)
             {
@@ -131,12 +133,6 @@ public class Light_On_Off : MonoBehaviour
                 myLight.intensity = 0;
             }
 
-        }
-        else
-        {
-            myLight.intensity = 0;
-        }
-
-       
+        }       
     }
 }
