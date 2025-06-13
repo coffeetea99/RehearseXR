@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
+
 using TMPro;
 
 struct ScriptLine
@@ -20,6 +23,8 @@ public class ScriptReader : MonoBehaviour
     private float timer = 0f;
     private float beforeTime = 0f;
     private string initialText;
+    
+    private InputDevice leftController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,17 +35,44 @@ public class ScriptReader : MonoBehaviour
         }
         initialText = fullScript[0].text + "\n" + fullScript[1].text + "\n" + fullScript[2].text + "\n" + fullScript[3].text;
         mText.text = initialText;
+        
+        // Find the left-hand controller
+        List<InputDevice> devices = new List<InputDevice>();
+        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, devices);
+
+        if (devices.Count > 0)
+        {
+            leftController = devices[0];
+            Debug.Log("Left controller found: " + leftController.name);
+        }
+        else
+        {
+            Debug.LogWarning("Left controller not found.");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+    #if UNITY_EDITOR
+        // Debug key for simulating Y button press in Editor
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             timer = 0f;
             beforeTime = 0f;
             mText.text = initialText;
         }
+    #else
+        if (!leftController.isValid)
+            return;
+
+        if (leftController.TryGetFeatureValue(CommonUsages.secondaryButton, out bool yButtonPressed) && yButtonPressed)
+        {
+            timer = 0f;
+            beforeTime = 0f;
+            mText.text = initialText;
+        }
+    #endif
 
         beforeTime = timer;
         timer += Time.deltaTime;
