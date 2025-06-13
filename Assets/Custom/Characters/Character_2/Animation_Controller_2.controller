@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Talking
+  m_Name: Talking2
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: f17fc55944624704b8780322dc1acd73, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 6d617101fe624fc4a9c84617837e14c3, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
