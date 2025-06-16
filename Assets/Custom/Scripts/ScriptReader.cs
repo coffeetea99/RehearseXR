@@ -108,12 +108,12 @@ public class ScriptReader : MonoBehaviour
 
     // TODO: set time
     private static readonly ScriptLine[] fullScript = new ScriptLine[]{
-        new ScriptLine(0f, "A와 B 손전등을 켜고 방 안을 뒤진다 <color=red>(핀 조명만 들어와 있다)</color>\n"),
+        new ScriptLine(0f, "A와 B 손전등을 켜고 방 안을 뒤진다 <color=red>(3번 조명을 약하게 켠다)</color>\n"),
         new ScriptLine(2f, "A : 찾았어?"),
         new ScriptLine(4.5f, "B : 아니, 아직."),
         new ScriptLine(7.5f, "A : 큰일 났네."),
         new ScriptLine(10.5f, "B : 어떡하지?\n"),
-        new ScriptLine(12f, "C가 방 안으로 들어오며 불을 켠다 <color=red>(더 넓은 영역에 조명이 들어온다)</color>\n"),
+        new ScriptLine(12f, "C가 방 안으로 들어오며 불을 켠다 <color=red>(3번 조명의 세기를 올린다)</color>\n"),
         new ScriptLine(19f, "C : 그냥 불 켜고 찾아."),
         new ScriptLine(22f, "B : 미쳤어? 불을 켜면 어떡해!"),
         new ScriptLine(26.5f, "A : 맞아! 누가 보면 어떡하려고!"),
@@ -121,8 +121,8 @@ public class ScriptReader : MonoBehaviour
         new ScriptLine(37.5f, "B : 그런가..."),
         new ScriptLine(40f, "C : 그러니까 빨리 찾아.\n"),
         new ScriptLine(42f, "세 사람이 방을 뒤적거린다\n"),
-        new ScriptLine(50f, "A : <color=red>(옆 방의 불을 켜며)</color> 여기 있나?"),
-        new ScriptLine(58f, "B : <color=red>(반대쪽 방의 불을 켜며)</color> 난 이쪽 찾아볼게.\n"),
+        new ScriptLine(50f, "A : <color=red>(1번 조명을 켠다)</color> 여기 있나?"),
+        new ScriptLine(58f, "B : <color=red>(2번 조명을 켠다)</color> 난 이쪽 찾아볼게.\n"),
         new ScriptLine(61.5f, "C : 어? 이거 아냐?"),
         new ScriptLine(65.5f, "B : (다시 방에서 나오며) 아니야. 우리가 찾는 건 빨간색인데 이건 붉은색이잖아."),
         new ScriptLine(74f, "C : 뭐가 다른 거야…?\n"),
@@ -132,14 +132,14 @@ public class ScriptReader : MonoBehaviour
         new ScriptLine(93f, "B : 아무리 찾아도 나오질 않아."),
         new ScriptLine(96.5f, "C : 하, 어떡하지. 시간이 없다, 시간이."),
         new ScriptLine(102f, "B : 도대체 어디에 놔둔 거야.\n"),
-        new ScriptLine(106f, "<color=red>갑자기 사이렌이 울리며 붉은 조명이 들어온다</color>\n"),
+        new ScriptLine(106f, "<color=red>갑자기 사이렌이 울리며 붉은 조명이 들어온다 (2, 3번 조명을 붉은 색으로 바꾼다)</color>\n"),
         new ScriptLine(111.5f, "A : 큰일났다!"),
         new ScriptLine(114.5f, "B : 어쩌지, 아직 못찾았는데."),
         new ScriptLine(118.5f, "C : 지금 그게 중요해? 뛰어!"),
         new ScriptLine(122.5f, "A : 여기만 보고 갈게...!"),
         new ScriptLine(126f, "C : 그럴 시간 없다고! 빨리 나와!\n"),
         new ScriptLine(131f, "세 사람, 방에서 도망친다"),
-        new ScriptLine(134f, "<color=red>암전</color>"),
+        new ScriptLine(134f, "<color=red>서서히 암전 (2, 3번 조명의 세기를 꺼질 때까지 서서히 낮춘다)</color>"),
     };
 }
 
