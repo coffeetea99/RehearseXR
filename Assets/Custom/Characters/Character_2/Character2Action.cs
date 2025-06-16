@@ -164,6 +164,15 @@ public class Character2Action : MonoBehaviour
             SetAction(IDLE);
             timer = 0f;
             beforeTime = 0f;
+            
+            audioSource.Stop();
+
+            // Reset scheduled events
+
+            foreach (var e in eventSchedule)
+            {
+                e.done = false;
+            }
         }
     #endif
 
