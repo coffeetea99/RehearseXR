@@ -6,7 +6,8 @@ using UnityEngine.XR.Content.Interaction;
 
 public class Light_Rotate : MonoBehaviour
 {
-    public GameObject Light1_OnOff;
+    // public GameObject Light1_OnOff;
+    public GameObject Light_Button;
     public GameObject Light1_Rotation;
     public GameObject Light1_Rotation_On;
 
@@ -27,11 +28,11 @@ public class Light_Rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
+        // GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
         GameObject Rotation_On_object = Light1_Rotation_On.transform.Find("Lever").gameObject;
         GameObject Rotation_object = Light1_Rotation.transform.Find("Dial").gameObject;
 
-        Light_On = OnOff_object.GetComponent<XRLever>().value;
+        Light_On = (Light_Button.transform.localPosition.y != 0);
         Rotation_On = Rotation_On_object.GetComponent<XRLever>().value;        
         y_angle = 30 + 120 * Rotation_object.GetComponent<XRKnob>().value;
 

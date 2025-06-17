@@ -6,7 +6,8 @@ using UnityEngine.XR.Content.Interaction;
 
 public class Light_Moving : MonoBehaviour
 {
-    public GameObject Light1_OnOff;
+    // public GameObject Light1_OnOff;
+    public GameObject Light_Button;
     public GameObject Light1_Left;
     public GameObject Light1_Right;
 
@@ -29,11 +30,11 @@ public class Light_Moving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
+        // GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
         GameObject Left_object = Light1_Left.transform.Find("Lever").gameObject;
         GameObject Right_object = Light1_Right.transform.Find("Lever").gameObject;
 
-        Light_On = OnOff_object.GetComponent<XRLever>().value;
+        Light_On = (Light_Button.transform.localPosition.y != 0);
         Left_On = Left_object.GetComponent<XRLever>().value;
         Right_On = Right_object.GetComponent<XRLever>().value;
 

@@ -8,7 +8,8 @@ public class Light_Color : MonoBehaviour
 {
     Light myLight;
 
-    public GameObject Light1_OnOff;
+    // public GameObject Light1_OnOff;
+    public GameObject Light_Button;
     public GameObject Light1_Red;
     public GameObject Light1_Blue;
     public GameObject Light1_Green;
@@ -32,12 +33,12 @@ public class Light_Color : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
+        // GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
         GameObject Red_Object = Light1_Red.transform.Find("Lever").gameObject;
         GameObject Blue_Object = Light1_Blue.transform.Find("Lever").gameObject;
         GameObject Green_Object = Light1_Green.transform.Find("Lever").gameObject;
 
-        Light_On = OnOff_object.GetComponent<XRLever>().value;
+        Light_On = (Light_Button.transform.localPosition.y != 0);
         Red_On = Red_Object.GetComponent<XRLever>().value;
         Blue_On = Blue_Object.GetComponent<XRLever>().value;
         Green_On = Green_Object.GetComponent<XRLever>().value;

@@ -15,18 +15,19 @@ using UnityEngine.XR.Content.Interaction;
 
 public class Light_On_Off : MonoBehaviour
 {
-    Light myLight; //light ÄÄÆ÷³ÍÆ®¸¦ ´ã´Â º¯¼ö
-    public float slider_Value; // sliderÀÇ À§Ä¡¸¦ ´ã´Â º¯¼ö
-    public int slider_Value_int; // sliderÀÇ À§Ä¡¸¦ Á¤¼ö·Î º¯È¯, log(intensity) °ª, 0 ~ 30
+    Light myLight; //light ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public float slider_Value; // sliderï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    public int slider_Value_int; // sliderï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯, log(intensity) ï¿½ï¿½, 0 ~ 30
 
     public bool Light_On;
 
     public GameObject Light1_Intensiety;
-    public GameObject Light1_OnOff;
+    // public GameObject Light1_OnOff;
+    public GameObject Light_Button;
 
     void Start()
     {
-        myLight = this.GetComponent<Light>(); //¿ÀºêÁ§Æ®°¡ °¡Áø light ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿È.
+        myLight = this.GetComponent<Light>(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ light ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
         myLight.intensity = 500;
         slider_Value = 0.0f;
         slider_Value_int = 0;
@@ -37,8 +38,8 @@ public class Light_On_Off : MonoBehaviour
     void Update()
     {
         /*
-         // Å°º¸µå·Î¸¸ Á¶ÀÛ
-         // I : Á¶¸í¼¼±â Áõ°¡, O : Á¶¸í on/off, P : Á¶¸í ¼¼±â °¨¼Ò
+         // Å°ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+         // I : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, O : ï¿½ï¿½ï¿½ï¿½ on/off, P : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.O))
         {
             if(myLight.intensity <= 0)
@@ -86,7 +87,7 @@ public class Light_On_Off : MonoBehaviour
          */
 
         /*
-        // Å°º¸µå·Î¸¸ Á¶ÀÛ, slider_Value_int È°¿ë
+        // Å°ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½, slider_Value_int È°ï¿½ï¿½
         if (Input.GetKeyDown(KeyCode.I))
         {
             slider_Value_int--;
@@ -110,8 +111,8 @@ public class Light_On_Off : MonoBehaviour
         slider_Value = child_object.GetComponent<XRSlider>().value;
         slider_Value_int = (int)(slider_Value * 30);
 
-        GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
-        Light_On = OnOff_object.GetComponent<XRLever>().value;
+        // GameObject OnOff_object = Light1_OnOff.transform.Find("Lever").gameObject;
+        Light_On = (Light_Button.transform.localPosition.y != 0);
 
         if (Light_On)
         {
