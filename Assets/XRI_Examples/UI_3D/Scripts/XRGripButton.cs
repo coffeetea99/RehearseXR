@@ -31,7 +31,7 @@ namespace UnityEngine.XR.Content.Interaction
 
         bool m_Hovered = false;
         bool m_Selected = false;
-        bool m_Toggled = false;
+        bool m_Toggled = true;
 
         /// <summary>
         /// The object that is visually pressed down
@@ -63,7 +63,7 @@ namespace UnityEngine.XR.Content.Interaction
 
         void Start()
         {
-            SetButtonHeight(0.0f);
+            SetButtonHeight(-0.02f);
         }
 
         protected override void OnEnable()
