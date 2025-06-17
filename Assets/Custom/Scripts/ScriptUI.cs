@@ -12,6 +12,8 @@ public class ScriptUI : MonoBehaviour
 
     private InputDevice leftController;
 
+    private bool buttonXPressedDown;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,8 +52,17 @@ public class ScriptUI : MonoBehaviour
         // Check if the X button (primaryButton on left controller) is pressed
         if (leftController.TryGetFeatureValue(CommonUsages.primaryButton, out bool xButtonPressed) && xButtonPressed)
         {
-            isVisible = !isVisible;
-            setVisibility();
+            if (!buttonXPressedDown)
+            {
+                isVisible = !isVisible;
+                setVisibility();
+            }
+
+            buttonXPressedDown = true;
+        }
+        else
+        {
+            buttonXPressedDown = false;
         }
 #endif
     }
